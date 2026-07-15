@@ -14,6 +14,11 @@ from config.app_settings import (
 )
 
 
+from app.core.logger import get_logger
+
+logger = get_logger("app.main")
+
+
 def main():
     """
     Start the AI Job Search Automation Platform.
@@ -23,6 +28,9 @@ def main():
     print(f" {APPLICATION_NAME}")
     print(f"Version: {APPLICATION_VERSION}")
     print(f"Environment: {ENVIRONMENT}")
+
+    logger.info("Application started successfully.")
+    
     print("==========================================")
 
 
