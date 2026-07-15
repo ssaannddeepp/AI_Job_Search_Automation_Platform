@@ -7,6 +7,11 @@ Author: Sandeep Kumar Singh
 Project: AI Job Search Automation Platform
 """
 
+from config.app_settings import (
+    APPLICATION_NAME,
+    APPLICATION_VERSION,
+    ENVIRONMENT
+)
 
 
 def main():
@@ -15,8 +20,9 @@ def main():
     """
 
     print("==========================================")
-    print(" AI Job Search Automation Platform")
-    print(" Application started successfully.")
+    print(f" {APPLICATION_NAME}")
+    print(f"Version: {APPLICATION_VERSION}")
+    print(f"Environment: {ENVIRONMENT}")
     print("==========================================")
 
 
