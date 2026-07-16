@@ -16,6 +16,8 @@ from config.app_settings import (
 
 from app.core.logger import get_logger
 from app.exceptions.database_exceptions import DatabaseConnectionError
+from app.database.database_manager import DatabaseManager
+
 logger = get_logger("app.main")
 
 
@@ -31,6 +33,11 @@ def main():
         print(f"Environment: {ENVIRONMENT}")
 
         logger.info("Application started successfully.")
+
+        database_manager = DatabaseManager()
+        database_manager.connect()
+        database_manager.disconnect()
+        
     
         raise DatabaseConnectionError(
         "Unable to connect to PostgreSQL database."
