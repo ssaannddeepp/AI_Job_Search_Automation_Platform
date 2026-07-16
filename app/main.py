@@ -15,7 +15,7 @@ from config.app_settings import (
 
 
 from app.core.logger import get_logger
-
+from app.exceptions.database_exceptions import DatabaseConnectionError
 logger = get_logger("app.main")
 
 
@@ -23,14 +23,23 @@ def main():
     """
     Start the AI Job Search Automation Platform.
     """
+    try:
 
-    print("==========================================")
-    print(f" {APPLICATION_NAME}")
-    print(f"Version: {APPLICATION_VERSION}")
-    print(f"Environment: {ENVIRONMENT}")
+        print("==========================================")
+        print(f" {APPLICATION_NAME}")
+        print(f"Version: {APPLICATION_VERSION}")
+        print(f"Environment: {ENVIRONMENT}")
 
-    logger.info("Application started successfully.")
+        logger.info("Application started successfully.")
     
+        raise DatabaseConnectionError(
+        "Unable to connect to PostgreSQL database."
+        ) 
+
+    except DatabaseConnectionError as error:
+
+        logger.error(f"Database error: {error}")
+
     print("==========================================")
 
 
