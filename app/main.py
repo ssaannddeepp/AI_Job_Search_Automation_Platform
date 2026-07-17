@@ -39,10 +39,7 @@ def main():
         database_manager.disconnect()
         
     
-        raise DatabaseConnectionError(
-        "Unable to connect to PostgreSQL database."
-        ) 
-
+      
     except DatabaseConnectionError as error:
 
         logger.error(f"Database error: {error}")
